@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-ink: #0a0a0a;
+  --color-bone: #fafaf7;
+  --color-sand: #f0ece2;
+  --color-pacific: #1f4a6b;
+  --color-pacific-deep: #102d44;
+}
+
+html, body {
+  background: var(--color-bone);
+  color: var(--color-ink);
+  font-family: "Inter Tight", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle texture on the bone background for warmth — barely perceptible */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+  background-image:
+    radial-gradient(circle at 25% 30%, rgba(31, 74, 107, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 70%, rgba(31, 74, 107, 0.025) 0%, transparent 50%);
+}
+
+/* Page entry — staggered fade-in */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.reveal-delay-1 { animation-delay: 0.1s; }
+.reveal-delay-2 { animation-delay: 0.25s; }
+.reveal-delay-3 { animation-delay: 0.4s; }
+.reveal-delay-4 { animation-delay: 0.55s; }
+
+/* Smooth scroll for anchor links */
+html { scroll-behavior: smooth; }
+
+/* Selection */
+::selection {
+  background: var(--color-pacific);
+  color: var(--color-bone);
+}
