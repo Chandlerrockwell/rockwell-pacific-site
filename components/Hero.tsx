@@ -39,7 +39,7 @@ export function Hero() {
 
           <div className="reveal reveal-delay-4 mt-12 flex flex-wrap gap-4">
             <a
-              href="https://rockwellpmg.appfolio.com/connect"
+              href="https://rockwellpmgllc.appfolio.com/connect"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-bone text-ink px-7 py-4 text-[12px] tracking-[0.2em] uppercase hover:bg-pacific hover:text-bone transition-colors"
@@ -48,7 +48,7 @@ export function Hero() {
               <span className="text-base">→</span>
             </a>
             <a
-              href="https://rockwellpmg.appfolio.com/connect"
+              href="https://rockwellpmgllc.appfolio.com/connect"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 border border-bone/40 text-bone px-7 py-4 text-[12px] tracking-[0.2em] uppercase hover:bg-bone hover:text-ink transition-colors"

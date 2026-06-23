@@ -2,13 +2,13 @@ const services = [
   {
     label: "Pay rent online",
     body: "Set up autopay or make a one-time payment through the secure resident portal. ACH, debit, and credit accepted.",
-    href: "https://rockwellpmg.appfolio.com/connect",
+    href: "https://rockwellpmgllc.appfolio.com/connect",
     cta: "Resident portal",
   },
   {
     label: "Maintenance requests",
     body: "Submit a service request anytime. Photos welcome. Track status and history through the portal.",
-    href: "https://rockwellpmg.appfolio.com/connect",
+    href: "https://rockwellpmgllc.appfolio.com/connect",
     cta: "Submit a request",
   },
   {

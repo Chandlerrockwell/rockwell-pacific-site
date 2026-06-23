@@ -35,7 +35,7 @@ export function Nav() {
         {/* Two clear tenant actions, always visible at the top */}
         <div className="flex items-center gap-3">
           <a
-            href="https://rockwellpmg.appfolio.com/connect"
+            href="https://rockwellpmgllc.appfolio.com/connect"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:inline-block text-[12px] tracking-[0.15em] uppercase border border-bone/50 text-bone px-5 py-2.5 hover:bg-bone hover:text-ink transition-colors"
@@ -43,7 +43,7 @@ export function Nav() {
             Maintenance
           </a>
           <a
-            href="https://rockwellpmg.appfolio.com/connect"
+            href="https://rockwellpmgllc.appfolio.com/connect"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[12px] tracking-[0.15em] uppercase bg-bone text-ink px-5 py-2.5 hover:bg-pacific hover:text-bone transition-colors"

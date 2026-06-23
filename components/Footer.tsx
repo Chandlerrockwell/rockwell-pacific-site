@@ -27,7 +27,7 @@ export function Footer() {
             <ul className="space-y-3 text-bone/85 text-[14px]">
               <li>
                 <a
-                  href="https://rockwellpmg.appfolio.com/connect"
+                  href="https://rockwellpmgllc.appfolio.com/connect"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-pacific-mist transition-colors"
@@ -37,7 +37,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://rockwellpmg.appfolio.com/connect"
+                  href="https://rockwellpmgllc.appfolio.com/connect"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-pacific-mist transition-colors"
@@ -47,7 +47,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://rockwellpmg.appfolio.com/listings"
+                  href="https://rockwellpmgllc.appfolio.com/listings"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-pacific-mist transition-colors"
@@ -61,6 +61,14 @@ export function Footer() {
           <div className="md:col-span-3">
             <div className="text-[10px] tracking-[0.3em] text-bone/50 mb-4">CONTACT</div>
             <ul className="space-y-3 text-bone/85 text-[14px]">
+              <li>
+                <a
+                  href="tel:+13104057632"
+                  className="hover:text-pacific-mist transition-colors"
+                >
+                  (310) 405-7632
+                </a>
+              </li>
               <li>
                 <a
                   href="mailto:Admin@rockwellpmg.com"
