@@ -6,7 +6,7 @@ export function Nav() {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo + company name — enlarged and set in light "bone" so it stays
             legible over the dark hero photo (was dark-on-dark and invisible). */}
-        <a href="#top" className="flex items-center gap-4 group">
+        <a href="/" className="flex items-center gap-4 group">
           <Image
             src="/logo/logo-square.png"
             alt="Rockwell Pacific Management"
@@ -26,12 +26,12 @@ export function Nav() {
         </a>
 
         <div className="hidden md:flex items-center gap-9 text-[13px] tracking-wide text-bone/80">
-          <a href="#services" className="hover:text-pacific-mist transition-colors">Residents</a>
-          <a href="#owners" className="hover:text-pacific-mist transition-colors">Owners</a>
-          <a href="#properties" className="hover:text-pacific-mist transition-colors">Properties</a>
-          <a href="#vacancies" className="hover:text-pacific-mist transition-colors">Vacancies</a>
-          <a href="#faq" className="hover:text-pacific-mist transition-colors">FAQ</a>
-          <a href="#contact" className="hover:text-pacific-mist transition-colors">Contact</a>
+          <a href="/residents" className="hover:text-pacific-mist transition-colors">Residents</a>
+          <a href="/owners" className="hover:text-pacific-mist transition-colors">Owners</a>
+          <a href="/#properties" className="hover:text-pacific-mist transition-colors">Properties</a>
+          <a href="/#vacancies" className="hover:text-pacific-mist transition-colors">Vacancies</a>
+          <a href="/#faq" className="hover:text-pacific-mist transition-colors">FAQ</a>
+          <a href="/#contact" className="hover:text-pacific-mist transition-colors">Contact</a>
         </div>
 
         {/* Two clear tenant actions, always visible at the top */}
