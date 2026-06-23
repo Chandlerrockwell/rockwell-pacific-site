@@ -72,4 +72,21 @@ export const properties: Property[] = [
       { src: "/photos/9132-crenshaw/exterior/02-parking-lot.jpg", alt: "Resurfaced parking lot", kind: "exterior" },
     ],
   },
+  {
+    slug: "1904-s-robertson",
+    name: "1904 S Robertson Boulevard",
+    address: "1904 S Robertson Blvd, Los Angeles",
+    neighborhood: "Pico-Robertson",
+    style: "Mid-century courtyard apartments",
+    units: "Multi-unit",
+    blurb:
+      "A classic mid-century courtyard community on Robertson Boulevard, set around a sparkling pool and mature palms. Bright, comfortable units feature in-unit washer/dryer and air conditioning, with gated entry and easy access across the Westside.",
+    hero: "/photos/1904-s-robertson/exterior/89075128-A975-4132-B5AD-21B7B018DC2A.PNG",
+    gallery: [
+      { src: "/photos/1904-s-robertson/exterior/89075128-A975-4132-B5AD-21B7B018DC2A.PNG", alt: "Street-facing facade with palm trees", kind: "exterior" },
+      { src: "/photos/1904-s-robertson/exterior/IMG_0384.WEBP", alt: "Courtyard view overlooking the pool", kind: "exterior" },
+      { src: "/photos/1904-s-robertson/exterior/IMG_0383.WEBP", alt: "Swimming pool and sundeck", kind: "exterior" },
+      { src: "/photos/1904-s-robertson/exterior/IMG_0382.WEBP", alt: "Central courtyard and stairways", kind: "exterior" },
+    ],
+  },
 ];
