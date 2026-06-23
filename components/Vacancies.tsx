@@ -55,7 +55,7 @@ export function Vacancies() {
           </h2>
           <p className="text-ink/70 leading-relaxed text-[15px] max-w-md">
             Browse current vacancies across our Los Angeles portfolio. Listings
-            update automatically as units become available — applications and
+            update automatically as units become available. Applications and
             tours are handled directly through our resident portal.
           </p>
         </div>
@@ -69,6 +69,11 @@ export function Vacancies() {
             loading="lazy"
           />
         </div>
+
+        <p className="mt-4 text-ink/55 text-[13px] max-w-xl">
+          If no homes appear above, we have no vacancies at the moment. Check
+          back soon, or reach out through Contact to join our interest list.
+        </p>
 
         <div className="mt-8">
           <a

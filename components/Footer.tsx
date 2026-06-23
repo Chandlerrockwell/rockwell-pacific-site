@@ -17,7 +17,7 @@ export function Footer() {
             </h2>
             <p className="text-bone/65 leading-relaxed max-w-md text-[15px]">
               Whether you're a current resident, a prospective tenant, or a
-              property owner exploring management options — we'd be glad to
+              property owner exploring management options, we'd be glad to
               hear from you.
             </p>
           </div>

@@ -27,8 +27,10 @@ export function Nav() {
 
         <div className="hidden md:flex items-center gap-9 text-[13px] tracking-wide text-bone/80">
           <a href="#services" className="hover:text-pacific-mist transition-colors">Residents</a>
+          <a href="#owners" className="hover:text-pacific-mist transition-colors">Owners</a>
           <a href="#properties" className="hover:text-pacific-mist transition-colors">Properties</a>
           <a href="#vacancies" className="hover:text-pacific-mist transition-colors">Vacancies</a>
+          <a href="#faq" className="hover:text-pacific-mist transition-colors">FAQ</a>
           <a href="#contact" className="hover:text-pacific-mist transition-colors">Contact</a>
         </div>
 
