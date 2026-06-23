@@ -13,11 +13,11 @@
 html, body {
   background: var(--color-bone);
   color: var(--color-ink);
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: var(--font-inter-tight), "Inter Tight", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Subtle texture on the bone background for warmth — barely perceptible */
+/* Subtle texture on the bone background for warmth, barely perceptible */
 body::before {
   content: "";
   position: fixed;
@@ -30,7 +30,7 @@ body::before {
     radial-gradient(circle at 75% 70%, rgba(31, 74, 107, 0.025) 0%, transparent 50%);
 }
 
-/* Page entry — staggered fade-in */
+/* Page entry, staggered fade-in */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
@@ -46,6 +46,13 @@ body::before {
 
 /* Smooth scroll for anchor links */
 html { scroll-behavior: smooth; }
+
+/* Accessible focus state */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-pacific);
+  outline-offset: 2px;
+}
 
 /* Selection */
 ::selection {
