@@ -8,7 +8,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Pacific palette — black, ivory, deep ocean blue
+        // Pacific palette: black, ivory, deep ocean blue
         ink: "#0a0a0a",
         bone: "#fafaf7",
         sand: "#f0ece2",
@@ -19,8 +19,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        serif: ['"Cormorant Garamond"', "Georgia", "serif"],
-        sans: ['"Inter Tight"', "system-ui", "sans-serif"],
+        serif: ['var(--font-cormorant)', '"Cormorant Garamond"', "Georgia", "serif"],
+        sans: ['var(--font-inter-tight)', '"Inter Tight"', "system-ui", "sans-serif"],
       },
       letterSpacing: {
         widest: "0.25em",
