@@ -81,9 +81,9 @@ export const properties: Property[] = [
     units: "Multi-unit",
     blurb:
       "A classic mid-century courtyard community on Robertson Boulevard, set around a sparkling pool and mature palms. Bright, comfortable units feature in-unit washer/dryer and air conditioning, with gated entry and easy access across the Westside.",
-    hero: "/photos/1904-s-robertson/exterior/89075128-A975-4132-B5AD-21B7B018DC2A.PNG",
+    hero: "/photos/1904-s-robertson/exterior/01-street-facade.jpg",
     gallery: [
-      { src: "/photos/1904-s-robertson/exterior/89075128-A975-4132-B5AD-21B7B018DC2A.PNG", alt: "Street-facing facade with palm trees", kind: "exterior" },
+      { src: "/photos/1904-s-robertson/exterior/01-street-facade.jpg", alt: "Street-facing facade with palm trees", kind: "exterior" },
       { src: "/photos/1904-s-robertson/exterior/IMG_0384.WEBP", alt: "Courtyard view overlooking the pool", kind: "exterior" },
       { src: "/photos/1904-s-robertson/exterior/IMG_0383.WEBP", alt: "Swimming pool and sundeck", kind: "exterior" },
       { src: "/photos/1904-s-robertson/exterior/IMG_0382.WEBP", alt: "Central courtyard and stairways", kind: "exterior" },

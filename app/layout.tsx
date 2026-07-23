@@ -36,8 +36,11 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/photos/5371-louis-pl/exterior/01-front-facade.jpg",
-        alt: "A Rockwell Pacific Management multifamily property in Los Angeles",
+        url: "/og/og-logo.png",
+        width: 1200,
+        height: 630,
+        type: "image/png",
+        alt: "Rockwell Pacific Management logo",
       },
     ],
   },
@@ -46,11 +49,15 @@ export const metadata: Metadata = {
     title: "Rockwell Pacific Management | Los Angeles Property Management",
     description:
       "Responsive, transparent management of multifamily homes across Los Angeles.",
-    images: ["/photos/5371-louis-pl/exterior/01-front-facade.jpg"],
+    images: ["/og/og-logo.png"],
   },
   icons: {
-    icon: "/logo/logo-square.png",
-    apple: "/logo/logo-square.png",
+    icon: [
+      { url: "/logo/icon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/logo/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/logo/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: "/logo/apple-icon.png",
   },
   robots: {
     index: true,
@@ -81,6 +88,8 @@ const organizationSchema = {
   areaServed: [
     { "@type": "City", name: "Los Angeles" },
     { "@type": "City", name: "Inglewood" },
+    { "@type": "Place", name: "South Los Angeles" },
+    { "@type": "Place", name: "Pico-Robertson" },
   ],
   knowsAbout: [
     "Property management",

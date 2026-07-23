@@ -3,17 +3,17 @@ import Image from "next/image";
 export function Hero() {
   return (
     <section id="top" className="relative min-h-screen flex items-center overflow-hidden bg-ink">
-      {/* Hero image — the Crenshaw palm view, treated darkly */}
+      {/* Hero image — twilight courtyard pool, treated darkly */}
       <div className="absolute inset-0">
         <Image
-          src="/photos/9132-crenshaw/interior/02-livingroom-bay-window.jpg"
+          src="/photos/hero/courtyard-dusk.jpg"
           alt=""
           fill
           priority
-          className="object-cover opacity-50"
+          className="object-cover opacity-60"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/30 to-ink/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/25 to-ink/80" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/60 via-transparent to-transparent" />
       </div>
 

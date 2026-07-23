@@ -12,8 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/areas/south-los-angeles", priority: 0.8, changeFrequency: "monthly" as const },
     { path: "/areas/inglewood", priority: 0.8, changeFrequency: "monthly" as const },
     { path: "/areas/pico-robertson", priority: 0.8, changeFrequency: "monthly" as const },
-    { path: "/#vacancies", priority: 0.9, changeFrequency: "weekly" as const },
-    { path: "/#faq", priority: 0.6, changeFrequency: "monthly" as const },
   ];
 
   return routes.map((r) => ({
