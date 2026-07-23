@@ -6,7 +6,7 @@ export function Hero() {
       {/* Hero image — twilight courtyard pool, treated darkly */}
       <div className="absolute inset-0">
         <Image
-          src="/photos/hero/courtyard-dusk.jpg"
+          src="/photos/hero/courtyard-dusk.jpg.png"
           alt=""
           fill
           priority
