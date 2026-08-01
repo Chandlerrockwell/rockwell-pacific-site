@@ -72,6 +72,7 @@ export const properties: Property[] = [
       { src: "/photos/9132-crenshaw/exterior/02-parking-lot.jpg", alt: "Resurfaced parking lot", kind: "exterior" },
     ],
   },
+  /* TEMPORARILY HIDDEN July 2026 - to restore, delete this line and the closing comment line below
   {
     slug: "1904-s-robertson",
     name: "1904 S Robertson Boulevard",
@@ -89,4 +90,5 @@ export const properties: Property[] = [
       { src: "/photos/1904-s-robertson/exterior/IMG_0382.WEBP", alt: "Central courtyard and stairways", kind: "exterior" },
     ],
   },
+  */
 ];
