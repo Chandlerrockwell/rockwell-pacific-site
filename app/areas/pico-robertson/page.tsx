@@ -38,12 +38,11 @@ export default function PicoRobertsonPage() {
           <h2 className="font-serif text-[clamp(1.5rem,3vw,2.25rem)] text-ink font-light mb-5">
             Buildings we manage here
           </h2>
-          {/* TEMPORARILY HIDDEN July 2026: restore the paragraph naming 1904 S Robertson here (see git history) */}
           <p className="text-ink/70 leading-relaxed text-[15px] mb-10">
-            Our Pico-Robertson portfolio centers on classic mid-century
-            multifamily buildings, cared for with the same steady attention we
-            bring to every home we manage. You can see more in our{" "}
-            <a href="/#properties" className="underline decoration-ink/30 hover:text-pacific hover:decoration-pacific">portfolio</a>.
+            Our Pico-Robertson portfolio includes 1904 S Robertson Boulevard, a
+            classic mid-century courtyard community set around a pool, with
+            in-unit washer and dryer and air conditioning. You can see more in
+            our <a href="/#properties" className="underline decoration-ink/30 hover:text-pacific hover:decoration-pacific">portfolio</a>.
           </p>
 
           <div className="flex flex-wrap gap-4 mb-16">
