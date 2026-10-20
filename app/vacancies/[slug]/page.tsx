@@ -4,6 +4,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import {
   displayAddress,
+  displayTitle,
   getListing,
   getListings,
   listingHeadline,
@@ -147,7 +148,7 @@ export default async function VacancyPage({ params }: { params: { slug: string }
             </p>
           ) : null}
           <h1 className={`${unitLabel(l) ? "mt-3" : "mt-6"} font-serif text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.1] font-light max-w-4xl`}>
-            {l.title}
+            {displayTitle(l)}
           </h1>
           <p className="mt-5 text-bone/80 text-[16px]">
             {displayAddress(l)} · {l.bedBathLabel}
