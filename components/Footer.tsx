@@ -30,7 +30,7 @@ export function Footer() {
               <li><a href="/residents" className="hover:text-pacific-mist transition-colors">Residents</a></li>
               <li><a href="/owners" className="hover:text-pacific-mist transition-colors">Property owners</a></li>
               <li><a href="/#properties" className="hover:text-pacific-mist transition-colors">Properties</a></li>
-              <li><a href="/#vacancies" className="hover:text-pacific-mist transition-colors">Vacancies</a></li>
+              <li><a href="/vacancies" className="hover:text-pacific-mist transition-colors">Vacancies</a></li>
               <li><a href="/#faq" className="hover:text-pacific-mist transition-colors">FAQ</a></li>
             </ul>
           </div>
@@ -49,7 +49,7 @@ export function Footer() {
             <ul className="space-y-3 text-bone/85 text-[14px]">
               <li><a href={PORTAL_URL} target="_blank" rel="noopener noreferrer" className="hover:text-pacific-mist transition-colors">Pay rent</a></li>
               <li><a href={PORTAL_URL} target="_blank" rel="noopener noreferrer" className="hover:text-pacific-mist transition-colors">Maintenance requests</a></li>
-              <li><a href="https://rockwellpmgllc.appfolio.com/listings" target="_blank" rel="noopener noreferrer" className="hover:text-pacific-mist transition-colors">Available units</a></li>
+              <li><a href="/vacancies" className="hover:text-pacific-mist transition-colors">Available units</a></li>
             </ul>
           </div>
 

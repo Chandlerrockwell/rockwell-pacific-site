@@ -7,7 +7,7 @@ const LINKS = [
   { href: "/residents", label: "Residents" },
   { href: "/owners", label: "Owners" },
   { href: "/#properties", label: "Properties" },
-  { href: "/#vacancies", label: "Vacancies" },
+  { href: "/vacancies", label: "Vacancies" },
   { href: "/#faq", label: "FAQ" },
   { href: "/#contact", label: "Contact" },
 ];

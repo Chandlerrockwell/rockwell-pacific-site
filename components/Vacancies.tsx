@@ -1,42 +1,18 @@
 /**
- * Vacancies section.
+ * Vacancies section on the homepage.
  *
- * Embeds AppFolio's official Property Listing Widget so any unit marked
- * "Posted to Website" in AppFolio appears here automatically (updates within a
- * few minutes of posting in AppFolio — no site edits needed).
- *
- * The AppFolio embed relies on document.write, which doesn't play nicely with
- * React/Next. Rendering it inside an <iframe srcDoc> gives the widget a clean
- * standalone document to write into, exactly like a plain HTML page, so it
- * loads reliably. The "View all vacancies & apply" button remains as a fallback.
+ * Renders every unit marked "Posted to Website" in AppFolio as real,
+ * crawlable HTML (see lib/appfolio.ts). Each card links to its own
+ * /vacancies/<slug> page with full details, photos and schema.org markup.
+ * Posting or unposting in AppFolio updates the site automatically within
+ * about 15 minutes; no site edits needed.
  */
+import { getListings } from "@/lib/appfolio";
+import { VacancyCard } from "@/components/VacancyCard";
 
-const LISTINGS_URL = "https://rockwellpmgllc.appfolio.com/listings";
+export async function Vacancies() {
+  const listings = await getListings();
 
-const WIDGET_SRCDOC = `<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<style>html,body{margin:0;padding:0;background:#f0ece2;font-family:'Inter Tight',system-ui,sans-serif;}</style>
-</head>
-<body>
-<script type='text/javascript' charset='utf-8'>
-  document.write(unescape("%3Cscript src='" + (('https:' == document.location.protocol) ? 'https:' : 'http:') + "//rockwellpmgllc.appfolio.com/javascripts/listing.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type='text/javascript' charset='utf-8'>
-  Appfolio.Listing({
-    hostUrl: 'rockwellpmgllc.appfolio.com',
-    themeColor: '#1f4a6b',
-    height: '100%',
-    width: '100%',
-    defaultOrder: 'date_posted'
-  });
-</script>
-</body>
-</html>`;
-
-export function Vacancies() {
   return (
     <section
       id="vacancies"
@@ -54,35 +30,30 @@ export function Vacancies() {
             <span className="italic">available now.</span>
           </h2>
           <p className="text-ink/70 leading-relaxed text-[15px] max-w-md">
-            Browse current vacancies across our Los Angeles portfolio. Listings
-            update automatically as units become available. Applications and
-            tours are handled directly through our resident portal.
+            Current apartments for rent across our Los Angeles portfolio.
+            Listings update automatically as units become available.
           </p>
         </div>
 
-        {/* Live AppFolio listings widget */}
-        <div className="bg-bone border border-ink/10 shadow-sm overflow-hidden">
-          <iframe
-            title="Current available units — Rockwell Pacific Management"
-            srcDoc={WIDGET_SRCDOC}
-            className="w-full h-[760px] md:h-[860px] border-0"
-            loading="lazy"
-          />
-        </div>
+        {listings.length > 0 ? (
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {listings.map((l) => (
+              <VacancyCard key={l.id} listing={l} />
+            ))}
+          </div>
+        ) : (
+          <p className="text-ink/60 text-[15px] max-w-xl">
+            We have no vacancies at the moment. Check back soon, or reach out
+            through Contact to join our interest list.
+          </p>
+        )}
 
-        <p className="mt-4 text-ink/55 text-[13px] max-w-xl">
-          If no homes appear above, we have no vacancies at the moment. Check
-          back soon, or reach out through Contact to join our interest list.
-        </p>
-
-        <div className="mt-8">
+        <div className="mt-12">
           <a
-            href={LISTINGS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/vacancies"
             className="inline-flex items-center gap-3 bg-ink text-bone px-7 py-4 text-[12px] tracking-[0.2em] uppercase hover:bg-pacific transition-colors"
           >
-            View all vacancies &amp; apply
+            View all vacancies
             <span>→</span>
           </a>
         </div>

@@ -7,6 +7,8 @@ import { Owners } from "@/components/Owners";
 import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 
+export const revalidate = 900;
+
 export default function Home() {
   return (
     <main className="relative">
