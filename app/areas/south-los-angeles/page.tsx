@@ -51,7 +51,7 @@ export default function SouthLosAngelesPage() {
               For owners
               <span>→</span>
             </a>
-            <a href="/#vacancies" className="inline-flex items-center gap-3 border border-ink/30 text-ink px-7 py-4 text-[12px] tracking-[0.2em] uppercase hover:bg-ink hover:text-bone transition-colors">
+            <a href="/vacancies" className="inline-flex items-center gap-3 border border-ink/30 text-ink px-7 py-4 text-[12px] tracking-[0.2em] uppercase hover:bg-ink hover:text-bone transition-colors">
               View vacancies
             </a>
           </div>
