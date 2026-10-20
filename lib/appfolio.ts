@@ -17,6 +17,7 @@ const REVALIDATE_SECONDS = 900;
 export type ListingSummary = {
   id: string; // AppFolio listing UUID
   slug: string; // SEO path segment, ends with the UUID
+  unit: string | null; // e.g. "17", parsed from the address or title
   title: string;
   address: string;
   rent: number | null;
@@ -78,10 +79,26 @@ function absolute(url: string | undefined | null) {
   return url;
 }
 
-function buildSlug(address: string, beds: number | null, id: string) {
-  const street = address.split(",")[0] ?? address;
+/** Pull a unit number out of "1904 S Robertson Blvd Unit 17, ..." or a title like "Unit 17 | ...". */
+export function parseUnit(address: string, title: string) {
+  const fromAddress = address.match(/(?:^|[\s,])(?:unit|apt\.?|apartment|#|ste\.?|suite)\s*#?\s*([A-Za-z0-9-]+)/i);
+  if (fromAddress) return fromAddress[1].toUpperCase();
+  const fromTitle = title.match(/(?:^|[\s,])(?:unit|apt\.?|apartment|#)\s*#?\s*([A-Za-z0-9-]+)/i);
+  return fromTitle ? fromTitle[1].toUpperCase() : null;
+}
+
+/** Street address without the unit designator, e.g. "1904 S Robertson Blvd". */
+export function streetOf(address: string) {
+  return (address.split(",")[0] ?? address)
+    .replace(/[\s,]*(?:unit|apt\.?|apartment|#|ste\.?|suite)\s*#?\s*[A-Za-z0-9-]+\s*$/i, "")
+    .trim();
+}
+
+function buildSlug(address: string, unit: string | null, beds: number | null, id: string) {
   const bedPart = beds === 0 ? "studio" : beds != null ? `${beds}-bed` : "";
-  return [slugify(street), "los-angeles", bedPart, id].filter(Boolean).join("-");
+  return [slugify(streetOf(address)), unit ? `unit-${slugify(unit)}` : "", "los-angeles", bedPart, id]
+    .filter(Boolean)
+    .join("-");
 }
 
 async function fetchHtml(url: string) {
@@ -113,11 +130,13 @@ export function parseListingsPage(html: string): ListingSummary[] {
     const { beds, baths } = parseBedBath(bedBathLabel);
     const img = item.querySelector(".js-listing-image");
     const available = facts["available"] || text(item.querySelector(".js-listing-available"));
+    const unit = parseUnit(address, title);
 
     return [
       {
         id,
-        slug: buildSlug(address, beds, id),
+        slug: buildSlug(address, unit, beds, id),
+        unit,
         title,
         address,
         rent: toNumber(rentLabel),
@@ -195,8 +214,21 @@ export async function getListing(slugOrId: string): Promise<ListingDetail | null
 export function listingHeadline(l: ListingSummary) {
   const bed = l.beds === 0 ? "Studio" : l.beds != null ? `${l.beds} Bed` : "";
   const bath = l.baths != null ? `${l.baths} Bath` : "";
-  const parts = [[bed, bath].filter(Boolean).join(" / "), "Apartment for Rent"].filter(Boolean);
+  const parts = [l.unit ? `Unit ${l.unit}:` : "", [bed, bath].filter(Boolean).join(" / "), "Apartment for Rent"].filter(Boolean);
   return parts.join(" ");
+}
+
+/** "Unit 17" label, or null when AppFolio gave us no unit designator. */
+export function unitLabel(l: ListingSummary) {
+  return l.unit ? `Unit ${l.unit}` : null;
+}
+
+/** Address line to display: street plus unit, then city/state/zip. */
+export function displayAddress(l: ListingSummary) {
+  const [, ...rest] = l.address.split(",");
+  const street = streetOf(l.address);
+  const first = l.unit ? `${street}, Unit ${l.unit}` : street;
+  return [first, ...rest.map((s) => s.trim())].filter(Boolean).join(", ");
 }
 
 export function neighborhoodFor(address: string) {
