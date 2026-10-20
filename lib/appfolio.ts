@@ -223,12 +223,19 @@ export function unitLabel(l: ListingSummary) {
   return l.unit ? `Unit ${l.unit}` : null;
 }
 
-/** Address line to display: street plus unit, then city/state/zip. */
+const UNIT_SEGMENT = /^(?:unit|apt\.?|apartment|#|ste\.?|suite)\s*#?\s*[A-Za-z0-9-]+$/i;
+
+/** Address line to display: street plus unit, then city/state/zip, with no repeats. */
 export function displayAddress(l: ListingSummary) {
-  const [, ...rest] = l.address.split(",");
+  const [, ...rest] = l.address.split(",").map((s) => s.trim());
   const street = streetOf(l.address);
   const first = l.unit ? `${street}, Unit ${l.unit}` : street;
-  return [first, ...rest.map((s) => s.trim())].filter(Boolean).join(", ");
+  return [first, ...rest.filter((s) => s && !UNIT_SEGMENT.test(s))].join(", ");
+}
+
+/** Marketing title without a leading "Unit 17 |" / "Unit 17:" / "Unit 17 -" prefix. */
+export function displayTitle(l: ListingSummary) {
+  return l.title.replace(/^\s*(?:unit|apt\.?|apartment|#)\s*#?\s*[A-Za-z0-9-]+\s*[|:\-–—]\s*/i, "").trim() || l.title;
 }
 
 export function neighborhoodFor(address: string) {
