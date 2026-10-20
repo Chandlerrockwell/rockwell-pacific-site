@@ -3,10 +3,13 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import {
+  displayAddress,
   getListing,
   getListings,
   listingHeadline,
   neighborhoodFor,
+  streetOf,
+  unitLabel,
   type ListingDetail,
 } from "@/lib/appfolio";
 import { COMPANY_NAME, LEASING_EMAIL, LEASING_PHONE, LEASING_PHONE_TEL, SITE_URL } from "@/lib/site";
@@ -20,12 +23,12 @@ export async function generateStaticParams() {
 }
 
 function seoTitle(l: ListingDetail) {
-  return `${listingHeadline(l)} in ${neighborhoodFor(l.address)} | ${l.rentLabel}/mo | ${l.address.split(",")[0]}`;
+  return `${listingHeadline(l)} in ${neighborhoodFor(l.address)} | ${l.rentLabel}/mo | ${streetOf(l.address)}`;
 }
 
 function seoDescription(l: ListingDetail) {
   const base = l.descriptionText.replace(/\s+/g, " ").trim();
-  const lead = `${l.bedBathLabel}${l.sqft ? `, ${l.sqft} sq ft` : ""} for rent at ${l.address}. ${l.rentLabel}/mo, available ${l.available === "Now" ? "now" : l.available}.`;
+  const lead = `${unitLabel(l) ? `${unitLabel(l)}: ` : ""}${l.bedBathLabel}${l.sqft ? `, ${l.sqft} sq ft` : ""} for rent at ${displayAddress(l)}. ${l.rentLabel}/mo, available ${l.available === "Now" ? "now" : l.available}.`;
   return `${lead} ${base}`.slice(0, 300).replace(/\s+\S*$/, "") + "...";
 }
 
@@ -49,18 +52,19 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 function listingSchema(l: ListingDetail) {
-  const [street, city = "Los Angeles", stateZip = "CA"] = l.address.split(",").map((s) => s.trim());
+  const [, city = "Los Angeles", stateZip = "CA"] = l.address.split(",").map((s) => s.trim());
+  const street = streetOf(l.address);
   const [region, postal] = stateZip.split(" ");
   const url = `${SITE_URL}/vacancies/${l.slug}`;
   const apartment = {
     "@type": "Apartment",
-    name: l.title,
+    name: unitLabel(l) ? `${unitLabel(l)}, ${street}` : l.title,
     description: l.descriptionText,
     url,
     image: l.photos,
     address: {
       "@type": "PostalAddress",
-      streetAddress: street,
+      streetAddress: l.unit ? `${street}, Unit ${l.unit}` : street,
       addressLocality: city,
       addressRegion: region || "CA",
       postalCode: postal,
@@ -114,7 +118,7 @@ function listingSchema(l: ListingDetail) {
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
           { "@type": "ListItem", position: 2, name: "Vacancies", item: `${SITE_URL}/vacancies` },
-          { "@type": "ListItem", position: 3, name: l.title, item: url },
+          { "@type": "ListItem", position: 3, name: unitLabel(l) ? `${unitLabel(l)}, ${street}` : l.title, item: url },
         ],
       },
     ],
@@ -137,11 +141,16 @@ export default async function VacancyPage({ params }: { params: { slug: string }
           <a href="/vacancies" className="text-[12px] tracking-[0.2em] uppercase text-bone/60 hover:text-bone">
             ← All vacancies
           </a>
-          <h1 className="mt-6 font-serif text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.1] font-light max-w-4xl">
+          {unitLabel(l) ? (
+            <p className="mt-6 text-[12px] tracking-[0.3em] uppercase text-bone/70">
+              {unitLabel(l)} · {streetOf(l.address)}
+            </p>
+          ) : null}
+          <h1 className={`${unitLabel(l) ? "mt-3" : "mt-6"} font-serif text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.1] font-light max-w-4xl`}>
             {l.title}
           </h1>
           <p className="mt-5 text-bone/80 text-[16px]">
-            {l.address} · {l.bedBathLabel}
+            {displayAddress(l)} · {l.bedBathLabel}
             {l.sqft ? ` · ${l.sqft.toLocaleString()} sq ft` : ""} ·{" "}
             {l.available === "Now" ? "Available now" : `Available ${l.available}`}
           </p>
@@ -158,7 +167,7 @@ export default async function VacancyPage({ params }: { params: { slug: string }
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={hero}
-              alt={`${l.bedBathLabel} apartment for rent at ${l.address}, ${neighborhoodFor(l.address)}`}
+              alt={`${unitLabel(l) ? `${unitLabel(l)}, ` : ""}${l.bedBathLabel} apartment for rent at ${displayAddress(l)}, ${neighborhoodFor(l.address)}`}
               className="w-full max-h-[640px] object-cover"
             />
             {rest.length > 0 ? (
@@ -201,12 +210,12 @@ export default async function VacancyPage({ params }: { params: { slug: string }
               <a className="block hover:text-pacific" href={`tel:${LEASING_PHONE_TEL}`}>
                 {LEASING_PHONE}
               </a>
-              <a className="block hover:text-pacific" href={`mailto:${LEASING_EMAIL}?subject=${encodeURIComponent(`Inquiry: ${l.address}`)}`}>
+              <a className="block hover:text-pacific" href={`mailto:${LEASING_EMAIL}?subject=${encodeURIComponent(`Inquiry: ${displayAddress(l)}`)}`}>
                 {LEASING_EMAIL}
               </a>
             </p>
             <a
-              href={`mailto:${LEASING_EMAIL}?subject=${encodeURIComponent(`Tour request: ${l.address}`)}`}
+              href={`mailto:${LEASING_EMAIL}?subject=${encodeURIComponent(`Tour request: ${displayAddress(l)}`)}`}
               className="block text-center bg-ink text-bone px-6 py-4 text-[12px] tracking-[0.2em] uppercase hover:bg-pacific transition-colors"
             >
               Request a tour
