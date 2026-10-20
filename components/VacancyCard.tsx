@@ -1,4 +1,4 @@
-import { displayAddress, unitLabel, type ListingSummary } from "@/lib/appfolio";
+import { displayAddress, displayTitle, unitLabel, type ListingSummary } from "@/lib/appfolio";
 
 export function VacancyCard({ listing: l }: { listing: ListingSummary }) {
   const unit = unitLabel(l);
@@ -35,7 +35,7 @@ export function VacancyCard({ listing: l }: { listing: ListingSummary }) {
         </div>
         <h3 className="text-ink text-[16px] leading-snug mb-2 group-hover:text-pacific transition-colors">
           {unit ? <span className="font-medium">{unit} · </span> : null}
-          {l.title}
+          {displayTitle(l)}
         </h3>
         <p className="text-ink/60 text-[14px]">
           {l.bedBathLabel}
